@@ -26,14 +26,9 @@ jobs:
           distribution: 'temurin'
           cache: maven
 
-      - name: Build & Test
-        run: mvn clean test
-
-      - name: SonarQube Scan
-        uses: SonarSource/sonarcloud-github-action@master
-        with:
-          args: >
-            -Dsonar.login=${{ env.SONAR_TOKEN }}
-            -Dsonar.host.url=${{ env.SONAR_HOST_URL }}
-            -Dsonar.projectKey=octacodez_springboot
+      - name: Build, Test & SonarQube Analysis
+        run: mvn clean verify sonar:sonar \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
+            -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
+            -Dsonar.projectKey=octacodez_springboot \
             -Dsonar.organization=octacodez
