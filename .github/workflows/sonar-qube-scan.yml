@@ -35,5 +35,5 @@ jobs:
           args: >
             -Dsonar.login=${{ env.SONAR_TOKEN }}
             -Dsonar.host.url=${{ env.SONAR_HOST_URL }}
-            -Dsonar.projectKey=octacodez _springboot
+            -Dsonar.projectKey=octacodez_springboot
             -Dsonar.organization=octacodez
