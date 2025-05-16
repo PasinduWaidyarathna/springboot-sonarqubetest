@@ -27,8 +27,10 @@ jobs:
           cache: maven
 
       - name: Build, Test & SonarQube Analysis
-        run: mvn clean verify sonar:sonar \
+        run: |
+          mvn \
             -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
             -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} \
             -Dsonar.projectKey=octacodez_springboot \
-            -Dsonar.organization=octacodez
+            -Dsonar.organization=octacodez \
+            clean verify sonar:sonar
